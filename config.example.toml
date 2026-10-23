@@ -16,3 +16,13 @@ My_Team_Names = [
     "atlanta united 2",
     "atlutd2",
 ]
+
+[Teams.ATLUTD]
+Name = "Atlanta United"
+Club_Id = "MLS-CLU-00000A"
+Competition_Id = "MLS-COM-000001"
+
+[Teams.ATLUTD2]
+Name = "Atlanta United 2"
+Club_Id = "MLS-CLU-00001W"
+Competition_Id = "MLS-COM-000003"
