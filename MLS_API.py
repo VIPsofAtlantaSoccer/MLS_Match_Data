@@ -203,10 +203,9 @@ def Build_Endpoint_List(
     Endpoints[ "Key_Events" ] = f"https://stats-api.mlssoccer.com/matches/{Match_Id}/key_events?per_page=1000"
     Endpoints[ "Club_Statistics" ] = f"https://stats-api.mlssoccer.com/statistics/clubs/matches/{Match_Id}"
     #Endpoints[ "Club_Possession" ] = f"https://stats-api.mlssoccer.com/statistics/clubs/matches/{Match_Id}/possession?scope=all"
-    Endpoints[ "Player_Statistics" ] = f"https://stats-api.mlssoccer.com/statistics/players/matches/{Match_Id}?per_page=200"
 
-    if ( Competition_Id != "MLS-COM-000003" ):
-        Endpoints[ "Club_Possession" ] = f"https://stats-api.mlssoccer.com/statistics/clubs/matches/{Match_Id}/possession?scope=all"
+    Endpoints[ "Club_Possession" ] = f"https://stats-api.mlssoccer.com/statistics/clubs/matches/{Match_Id}/possession?scope=all"
+    Endpoints[ "Player_Statistics" ] = f"https://stats-api.mlssoccer.com/statistics/players/matches/{Match_Id}?per_page=200"
 
     if ( Season_Id is not None ) and ( Competition_Id is not None ):
         Endpoints[ "Club_Season_Statistics" ] = (
@@ -379,6 +378,7 @@ def Download_All_Endpoints(
     Summary: Dict[str, Any] = {
         "Downloaded": {},
         "Failed": {},
+        "Unavailable": {},
     }
 
     Results_Table = Create_Results_Table()
@@ -407,6 +407,17 @@ def Download_All_Endpoints(
                 #str( Output_File.name ),
                 Url,
             )
+        elif ( Endpoint_Name == "Club_Possession" and Status_Code == 404 ):
+            Record[ "Output_File" ] = None
+            Summary[ "Unavailable" ][ Endpoint_Name ] = Record
+
+            Results_Table.add_row(
+                Endpoint_Name,
+                "[yellow]Unavailable[/]",
+                str( Status_Code ),
+                Url,
+            )
+
         else:
             Error_File = Output_Directory / f"{Endpoint_Name}.error.json"
             #Save_Response( Error_File, Data )

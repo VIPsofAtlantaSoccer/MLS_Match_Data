@@ -54,7 +54,7 @@ def Fetch_Season_Matches( Session: Any, Club_Id: str, Competition_Id: str, Seaso
         f"https://stats-api.mlssoccer.com/matches/seasons/{Season_Id}"
         f"?match_date%5Bgte%5D={Season}-01-01"
         f"&match_date%5Blte%5D={Season}-12-31"
-        f"&competition_id={Competition_Id}&per_page=1000"
+        f"&per_page=1000"
     )
 
     Success, Data, Status_Code, _ = Get_Json( Session, Url )
