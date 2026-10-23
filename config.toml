@@ -1,0 +1,12 @@
+[Application]
+Output_Directory = "/Users/ericcross/Data/VIPs/Match_Stats"
+
+[Rosters]
+My_Team_Names = [
+    "atlanta united",
+    "atlanta united fc",
+    "atl utd",
+    "atlutd",
+    "atlanta united 2",
+    "atlutd2",
+]

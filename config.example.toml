@@ -1,0 +1,18 @@
+
+#---------------------------------------------------------------------------------------------------------------#
+# MLS Match Data - Configuration
+#
+# Copy this file to config.toml and modify settings as needed.
+#---------------------------------------------------------------------------------------------------------------#
+[Application]
+Output_Directory = "path/Match_Stats"
+
+[Rosters]
+My_Team_Names = [
+    "atlanta united",
+    "atlanta united fc",
+    "atl utd",
+    "atlutd",
+    "atlanta united 2",
+    "atlutd2",
+]
